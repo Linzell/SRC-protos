@@ -1,0 +1,104 @@
+// Copyright 2024 Charlie Cohen <linzellart@gmail.com>
+//
+// Licensed under the GNU General Public License, Version 3.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.gnu.org/licenses/gpl-3.0.html
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// List of available options:
+// https://github.com/yoheimuta/protolint/blob/master/_example/config/.protolint.yaml
+
+syntax = "proto3";
+
+package client.v1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+// AuthService
+service AuthService {
+    // Login
+    rpc Login(LoginRequest) returns (LoginResponse) {
+        option (google.api.http) = {
+            post: "/v1/auth/login"
+            body: "*"
+        };
+    }
+
+    // Register
+    rpc Register(RegisterRequest) returns (RegisterResponse) {
+        option (google.api.http) = {
+            post: "/v1/auth/register"
+            body: "*"
+        };
+    }
+
+    // Logout
+    rpc Logout(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/v1/auth/logout"
+            body: "*"
+        };
+    }
+}
+
+// LoginRequest
+//
+// Request for login
+//
+// Fields:
+//
+// - email: string
+// - password: string
+message LoginRequest {
+    // email: string
+    string email = 1;
+    // password: string
+    string password = 2;
+}
+
+// LoginResponse
+//
+// Response for login
+//
+// Returns:
+//
+// - token: string
+message LoginResponse {
+    // token: string
+    string token = 1;
+}
+
+// RegisterRequest
+//
+// Request for register
+//
+// Fields:
+//
+// - email: string
+// - password: string
+message RegisterRequest {
+    // email: string
+    string email = 1;
+    // password: string
+    string password = 2;
+}
+
+// RegisterResponse
+//
+// Response for register
+//
+// Returns:
+//
+// - token: string
+message RegisterResponse {
+    // token: string
+    string token = 1;
+}

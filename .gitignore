@@ -1,0 +1,14 @@
+# Ignore all files in the root of the repository
+/out
+/.idea
+/.vscode
+
+# Ignore all buf.lock files
+*/buf.lock
+
+# Ignore all node_modules directories
+node_modules
+package-lock.json
+
+# Ignore all bower_components directories
+*.log

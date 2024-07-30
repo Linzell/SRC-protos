@@ -17,4 +17,4 @@ updates:
       - "Linzell"
     commit-message:
       # Prefix all commit messages with "GA: ""
-      prefix: "deps(GA)"
+      prefix: "ci(GA)"

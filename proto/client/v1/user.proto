@@ -19,128 +19,11 @@ syntax = "proto3";
 
 package client.v1;
 
-import "google/api/annotations.proto";
-import "google/protobuf/empty.proto";
+import "google/api/field_behavior.proto";
 
-// UserService
-service UserService {
-    // ReadUser
-    rpc ReadUser(google.protobuf.Empty) returns (stream User) {
-        option (google.api.http) = {
-            get: "/v1/user/read"
-        };
-    }
+import "client/v1/settings.proto";
 
-    // DeleteUser
-    rpc DeleteUser(google.protobuf.Empty) returns (google.protobuf.Empty) {
-        option (google.api.http) = {
-            delete: "/v1/user/delete"
-        };
-    }
-
-    // DisableUser
-    rpc DisableUser(google.protobuf.Empty) returns (google.protobuf.Empty) {
-        option (google.api.http) = {
-            post: "/v1/user/disable"
-        };
-    }
-}
-
-// Language
-//
-// Enum representing the user's language.
-enum Language {
-    // ENGLISH: English
-    ENGLISH = 0;
-    // SPANISH: Spanish
-    SPANISH = 1;
-    // FRENCH: French
-    FRENCH = 2;
-    // GERMAN: German
-    GERMAN = 3;
-    // ITALIAN: Italian
-    ITALIAN = 4;
-    // JAPANESE: Japanese
-    JAPANESE = 5;
-    // KOREAN: Korean
-    KOREAN = 6;
-    // CHINESE: Chinese
-    CHINESE = 7;
-    // RUSSIAN: Russian
-    RUSSIAN = 8;
-    // ARABIC: Arabic
-    ARABIC = 9;
-}
-
-// Theme
-//
-// Enum representing the user's theme.
-enum Theme {
-    // LIGHT: Light theme
-    LIGHT = 0;
-    // DARK: Dark theme
-    DARK = 1;
-    // SYSTEM: System theme
-    SYSTEM = 2;
-}
-
-// Notifications
-//
-// Notifications represents the user's notification settings.
-message Notifications {
-    // email: Whether the user wants to receive email notifications.
-    bool email = 1;
-    // push: Whether the user wants to receive push notifications.
-    bool push = 2;
-    // sms: Whether the user wants to receive SMS notifications.
-    bool sms = 3;
-}
-
-// Privacy
-//
-// Privacy represents the user's privacy settings.
-message Privacy {
-    // data_collection: Whether the user wants to allow data collection.
-    bool data_collection = 1;
-    // location: Whether the user wants to share their location.
-    bool location = 2;
-}
-
-// Security
-//
-// Security represents the user's security settings.
-message Security {
-    // two_factor: Whether the user wants to enable two-factor authentication.
-    bool two_factor = 1;
-    // qr_code: The user's QR code for two-factor authentication.
-    string qr_code = 2;
-    // magic_link: Whether the user wants to enable magic link authentication.
-    bool magic_link = 3;
-}
-
-// Settings
-//
-// Settings represents the user's settings.
-//
-// Fields:
-//
-// - language: The user's language.
-// - theme: The user's theme.
-// - notifications: The user's notification settings.
-// - privacy: The user's privacy settings.
-// - security: The user's security settings.
-message Settings {
-    // language: The user's language.
-    Language language = 1;
-    // theme: The user's theme.
-    Theme theme = 2;
-    // notifications: The user's notification settings.
-    Notifications notifications = 3;
-    // privacy: The user's privacy settings.
-    Privacy privacy = 4;
-    // security: The user's security settings.
-    Security security = 5;
-}
+import "common/v1/common.proto";
 
 // User
 //
@@ -154,11 +37,68 @@ message Settings {
 // - is_admin: Whether the user is an admin.
 message User {
     // email: The email address of the user.
-    string email = 1;
+    string email = 1 [(google.api.field_behavior) = REQUIRED];
     // avatar: The URL of the user's avatar.
-    string avatar = 2;
+    optional string avatar = 2;
     // settings: The user's settings.
-    Settings settings = 3;
+    Settings settings = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
     // is_admin: Whether the user is an admin.
-    bool is_admin = 4;
+    bool is_admin = 4 [(google.api.field_behavior) = REQUIRED];
+}
+
+// UpdateEmailRequest
+//
+// UpdateEmailRequest represents a request to update the user's email.
+//
+// Fields:
+//
+// - email: The new email address.
+// - temp_token: The temporary token.
+message UpdateEmailRequest {
+    // email: The new email address.
+    string email = 1 [(google.api.field_behavior) = REQUIRED];
+    // temp_token: The temporary token.
+    string temp_token = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+// UpdatePasswordRequest
+//
+// UpdatePasswordRequest represents a request to update the user's password.
+//
+// Fields:
+//
+// - password: The new password.
+// - old_password: The old password.
+// - temp_token: The temporary token.
+message UpdatePasswordRequest {
+    // password: The new password.
+    string password = 1 [(google.api.field_behavior) = REQUIRED];
+    // old_password: The old password.
+    string old_password = 2 [(google.api.field_behavior) = REQUIRED];
+    // temp_token: The temporary token.
+    string temp_token = 3 [(google.api.field_behavior) = REQUIRED];
+}
+
+// UploadAvatarRequest
+//
+// UploadAvatarRequest represents a request to upload the user's avatar.
+//
+// Fields:
+//
+// - file: The file to upload.
+message UploadAvatarRequest {
+    // file: The file to upload.
+    common.v1.File file = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+// UploadAvatarResponse
+//
+// UploadAvatarResponse represents a response to uploading the user's avatar.
+//
+// Returns:
+//
+// - url: The URL of the uploaded avatar.
+message UploadAvatarResponse {
+    // url: The URL of the uploaded avatar.
+    string url = 1;
 }

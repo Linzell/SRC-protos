@@ -45,7 +45,21 @@ npm install -g ts-proto
 buf generate proto --template proto/buf.gen.ts.yaml
 ```
 
----
+### Proto linter
+
+#### Dependencies:
+
+Install protolint with npx.
+
+ ```sh
+npx protolint
+```
+
+#### Lint:
+
+ ```sh
+protolint lint proto
+```
 
 Outputs will be in out/ directory.
 
@@ -59,20 +73,4 @@ When using "vscode-proto3" extention in VS Code, add the following to the '.vsco
     "options": ["--proto_path=proto"]
   }
 }
-```
-
-### Proto linter
-
-#### Dependencies:
-
-Install protolint with npx.
-
- ```sh
-protolint
-```
-
-#### Lint:
-
- ```sh
-protolint lint proto
 ```

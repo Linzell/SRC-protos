@@ -1,0 +1,159 @@
+// Copyright 2024 Charlie Cohen <linzellart@gmail.com>
+//
+// Licensed under the GNU General Public License, Version 3.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.gnu.org/licenses/gpl-3.0.html
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// List of available options:
+// https://github.com/yoheimuta/protolint/blob/master/_example/config/.protolint.yaml
+
+syntax = "proto3";
+
+package group.v1;
+
+import "common/v1/common.proto";
+
+import "group/v1/member.proto";
+import "group/v1/project.proto";
+
+import "google/api/field_behavior.proto";
+
+// Team
+//
+// A team is a group of people who work together to achieve a common goal.
+//
+// Fields:
+//
+// - cid: The CID of the team.
+// - name: The name of the team.
+// - description: A description of the team.
+// - logo: The logo of the team.
+// - projects: The projects the team is working on.
+// - members: The members of the team.
+message Team {
+    // cid: The CID of the team.
+    string cid = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+    // name: The name of the team.
+    string name = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+    // description: A description of the team.
+    optional string description = 3;
+    // logo: The logo of the team.
+    optional string logo = 4;
+    // projects: The projects the team is working on.
+    repeated Project projects = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+    // members: The members of the team.
+    repeated Member members = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// ReadTeamRequest
+//
+// Request message for the ReadTeam method.
+//
+// Fields:
+//
+// - cid: The CID of the team.
+message ReadTeamRequest {
+    // cid: The CID of the team.
+    string cid = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+// CreateTeamRequest
+//
+// Request message for the CreateTeam method.
+//
+// Fields:
+//
+// - name: The name of the team.
+message CreateTeamRequest {
+    // name: The name of the team.
+    string name = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+// DisableTeamRequest
+//
+// Request message for the DisableTeam method.
+//
+// Fields:
+//
+// - cid: The CID of the team.
+message DisableTeamRequest {
+    // cid: The CID of the team.
+    string cid = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+// DeleteTeamRequest
+//
+// Request message for the DeleteTeam method.
+//
+// Fields:
+//
+// - cid: The CID of the team.
+message DeleteTeamRequest {
+    // cid: The CID of the team.
+    string cid = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+// UpdateNameRequest
+//
+// Request message for the UpdateName method.
+//
+// Fields:
+//
+// - cid: The CID of the team.
+// - name: The new name of the team.
+message UpdateNameRequest {
+    // cid: The CID of the team.
+    string cid = 1 [(google.api.field_behavior) = REQUIRED];
+    // name: The new name of the team.
+    string name = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+// UpdateDescriptionRequest
+//
+// Request message for the UpdateDescription method.
+//
+// Fields:
+//
+// - cid: The CID of the team.
+// - description: The new description of the team.
+message UpdateDescriptionRequest {
+    // cid: The CID of the team.
+    string cid = 1 [(google.api.field_behavior) = REQUIRED];
+    // description: The new description of the team.
+    string description = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+// UpdateLogoRequest
+//
+// Request message for the UpdateLogo method.
+//
+// Fields:
+//
+// - cid: The CID of the team.
+// - file: The new logo of the team.
+message UpdateLogoRequest {
+    // cid: The CID of the team.
+    string cid = 1 [(google.api.field_behavior) = REQUIRED];
+    // file: The new logo of the team.
+    common.v1.File file = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+// UpdateLogoResponse
+//
+// Response message for the UpdateLogo method.
+//
+// Returns:
+//
+// - url: The URL of the new logo.
+message UpdateLogoResponse {
+    // url: The URL of the new logo.
+    string url = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+}

@@ -37,13 +37,13 @@ import "common/v1/common.proto";
 // - is_admin: Whether the user is an admin.
 message User {
     // email: The email address of the user.
-    string email = 1 [(google.api.field_behavior) = REQUIRED];
+    string email = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
     // avatar: The URL of the user's avatar.
     optional string avatar = 2;
     // settings: The user's settings.
     Settings settings = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
     // is_admin: Whether the user is an admin.
-    bool is_admin = 4 [(google.api.field_behavior) = REQUIRED];
+    bool is_admin = 4 [(google.api.field_behavior) = INPUT_ONLY];
 }
 
 // UpdateEmailRequest
@@ -100,5 +100,5 @@ message UploadAvatarRequest {
 // - url: The URL of the uploaded avatar.
 message UploadAvatarResponse {
     // url: The URL of the uploaded avatar.
-    string url = 1;
+    string url = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
 }

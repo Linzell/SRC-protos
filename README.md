@@ -29,6 +29,10 @@ cargo install protoc-gen-tonic
 buf generate proto --template proto/buf.gen.rust.yaml
 ```
 
+---
+
+Outputs will be in out/ directory.
+
 #### Typescript in Browser:
 
 ##### Dependencies:
@@ -45,6 +49,10 @@ npm install -g ts-proto
 buf generate proto --template proto/buf.gen.ts.yaml
 ```
 
+---
+
+Outputs will be in services/ directory.
+
 ### Proto linter
 
 #### Dependencies:
@@ -60,8 +68,6 @@ npx protolint
  ```sh
 protolint lint proto
 ```
-
-Outputs will be in out/ directory.
 
 ### Developement Hints
 

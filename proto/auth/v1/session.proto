@@ -32,7 +32,7 @@ import "google/protobuf/timestamp.proto";
 // - expire_date: string
 message Session {
     // token: string
-    string token = 1 [(google.api.field_behavior) = INPUT_ONLY];
+    string token = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
     // expire_date: string
     google.protobuf.Timestamp expire_date = 2 [
         (google.api.field_behavior) = IMMUTABLE,

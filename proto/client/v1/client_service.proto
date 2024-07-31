@@ -20,7 +20,6 @@ syntax = "proto3";
 package client.v1;
 
 import "google/api/annotations.proto";
-import "google/api/field_behavior.proto";
 import "google/protobuf/empty.proto";
 
 import "client/v1/notifications.proto";

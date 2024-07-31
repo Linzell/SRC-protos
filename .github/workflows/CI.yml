@@ -32,4 +32,4 @@ jobs:
       - name: run buf
         uses: bufbuild/buf-action@v1
         with:
-          exclude_imports: google
+          exclude_imports: true

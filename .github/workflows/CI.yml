@@ -19,3 +19,15 @@ jobs:
         uses: actions/checkout@v3
       - name: run protolint
         uses: plexsystems/protolint-action@v0.7.0
+        with:
+          configDirectory: .protolint.yaml
+          srcDirectory: ./proto
+
+  pr-test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout source
+        uses: actions/checkout@v3
+      - name: run buf
+        uses: bufbuild/buf-action@v1

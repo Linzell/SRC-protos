@@ -69,7 +69,7 @@ message Member {
 // - group_cid: The unique identifier of the group.
 // - cid: The unique identifier of the member.
 message AddMemberRequest {
-    // group_id: The unique identifier of the group.
+    // group_cid: The unique identifier of the group.
     string group_cid = 1 [(google.api.field_behavior) = REQUIRED];
     // cid: The unique identifier of the member.
     string cid = 2 [(google.api.field_behavior) = REQUIRED];

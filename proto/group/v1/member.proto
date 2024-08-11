@@ -47,9 +47,63 @@ enum Role {
 //
 // - cid: The unique identifier of the member.
 // - role: The role of the member.
+// - name: The name of the member.
+// - avatar: The avatar of the member.
 message Member {
     // cid: The unique identifier of the member.
     string cid = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
     // role: The role of the member.
     Role role = 2 [(google.api.field_behavior) = INPUT_ONLY];
+    // name: The name of the member.
+    string name = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
+    // avatar: The avatar of the member.
+    string avatar = 4 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// AddMemberRequest
+//
+// Request to add a member to a group.
+//
+// Fields:
+//
+// - group_cid: The unique identifier of the group.
+// - cid: The unique identifier of the member.
+message AddMemberRequest {
+    // group_id: The unique identifier of the group.
+    string group_cid = 1 [(google.api.field_behavior) = REQUIRED];
+    // cid: The unique identifier of the member.
+    string cid = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+// RemoveMemberRequest
+//
+// Request to remove a member from a group.
+//
+// Fields:
+//
+// - group_cid: The unique identifier of the group.
+// - cid: The unique identifier of the member.
+message RemoveMemberRequest {
+    // group_cid: The unique identifier of the group.
+    string group_cid = 1 [(google.api.field_behavior) = REQUIRED];
+    // cid: The unique identifier of the member.
+    string cid = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+// UpdateMemberRoleRequest
+//
+// Request to update the role of a member.
+//
+// Fields:
+//
+// - group_cid: The unique identifier of the group.
+// - cid: The unique identifier of the member.
+// - role: The new role of the member.
+message UpdateMemberRoleRequest {
+    // group_cid: The unique identifier of the group.
+    string group_cid = 1 [(google.api.field_behavior) = REQUIRED];
+    // cid: The unique identifier of the member.
+    string cid = 2 [(google.api.field_behavior) = REQUIRED];
+    // role: The new role of the member.
+    Role role = 3 [(google.api.field_behavior) = REQUIRED];
 }

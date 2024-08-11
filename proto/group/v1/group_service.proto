@@ -22,44 +22,44 @@ package group.v1;
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
-import "group/v1/team.proto";
+import "group/v1/group.proto";
 
 // GroupService
 service GroupService {
-    // ReadTeam
-    rpc ReadTeam(ReadTeamRequest) returns (Team) {
+    // ReadGroup
+    rpc ReadGroup(ReadGroupRequest) returns (Group) {
         option (google.api.http) = {
-            get: "/v1/teams/{team_id}"
+            get: "/v1/groups/{group_id}"
         };
     }
 
-    // CreateTeam
-    rpc CreateTeam(CreateTeamRequest) returns (Team) {
+    // CreateGroup
+    rpc CreateGroup(CreateGroupRequest) returns (Group) {
         option (google.api.http) = {
-            post: "/v1/teams/create"
+            post: "/v1/groups/create"
             body: "*"
         };
     }
 
-    // DisableTeam
-    rpc DisableTeam(DisableTeamRequest) returns (google.protobuf.Empty) {
+    // DisableGroup
+    rpc DisableGroup(DisableGroupRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            post: "/v1/teams/{team_id}/disable"
+            post: "/v1/groups/{group_id}/disable"
             body: "*"
         };
     }
 
-    // DeleteTeam
-    rpc DeleteTeam(DeleteTeamRequest) returns (google.protobuf.Empty) {
+    // DeleteGroup
+    rpc DeleteGroup(DeleteGroupRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            delete: "/v1/teams/{team_id}/delete"
+            delete: "/v1/groups/{group_id}/delete"
         };
     }
 
     // UpdateName
     rpc UpdateName(UpdateNameRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            post: "/v1/teams/{team_id}/update_name"
+            post: "/v1/groups/{group_id}/update_name"
             body: "*"
         };
     }
@@ -67,7 +67,7 @@ service GroupService {
     // UpdateDescription
     rpc UpdateDescription(UpdateDescriptionRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            post: "/v1/teams/{team_id}/update_description"
+            post: "/v1/groups/{group_id}/update_description"
             body: "*"
         };
     }
@@ -75,7 +75,31 @@ service GroupService {
     // UpdateLogo
     rpc UpdateLogo(UpdateLogoRequest) returns (UpdateLogoResponse) {
         option (google.api.http) = {
-            post: "/v1/teams/{team_id}/update_logo"
+            post: "/v1/groups/{group_id}/update_logo"
+            body: "*"
+        };
+    }
+
+    // AddMember
+    rpc AddMember(AddMemberRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/v1/groups/{group_id}/add_member/{user_id}"
+            body: "*"
+        };
+    }
+
+    // RemoveMember
+    rpc RemoveMember(RemoveMemberRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/v1/groups/{group_id}/remove_member/{user_id}"
+            body: "*"
+        };
+    }
+
+    // UpdateMemberRole
+    rpc UpdateMemberRole(UpdateMemberRoleRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/v1/groups/{group_id}/update_member_role/{user_id}"
             body: "*"
         };
     }

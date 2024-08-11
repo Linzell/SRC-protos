@@ -2,9 +2,6 @@ version: v1
 breaking:
   use:
     - FILE
-build:
-  roots:
-    - proto
 lint:
   use:
     - DEFAULT

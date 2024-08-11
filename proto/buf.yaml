@@ -2,62 +2,11 @@ version: v1
 breaking:
   use:
     - FILE
+build:
+  roots:
+    - proto
 lint:
   use:
     - DEFAULT
-  except:
-    - RPC_NAMES_UPPER_CAMEL_CASE
-  include:
-    - FIELD_NAMES_LOWER_SNAKE_CASE
-    - MESSAGE_NAMES_UPPER_CAMEL_CASE
-    - INDENT
-    - SERVICE_NAMES_END_WITH
-    - FIELD_NAMES_EXCLUDE_PREPOSITIONS
-    - MESSAGE_NAMES_EXCLUDE_PREPOSITIONS
-    - FILE_NAMES_LOWER_SNAKE_CASE
-    - IMPORTS_SORTED
-    - PACKAGE_NAME_LOWER_CASE
-    - ORDER
-    - MESSAGES_HAVE_COMMENT
-    - SERVICES_HAVE_COMMENT
-    - RPCS_HAVE_COMMENT
-    - FIELDS_HAVE_COMMENT
-    - PROTO3_FIELDS_AVOID_REQUIRED
-    - PROTO3_GROUPS_AVOID
-    - REPEATED_FIELD_NAMES_PLURALIZED
-    - ENUMS_HAVE_COMMENT
-    - ENUM_FIELDS_HAVE_COMMENT
-    - SYNTAX_CONSISTENT
-    - RPC_NAMES_CASE
-    - FILE_HAS_COMMENT
-    - QUOTE_CONSISTENT
-  ignore_only:
-    # Example to ignore specific files or directories
-    # proto/google: []
-  config:
-    indent:
-      style: 4
-      newline: "\n"
-    max_line_length:
-      max_chars: 100
-      tab_chars: 4
-    service_names_end_with:
-      text: Service
-    field_names_exclude_prepositions:
-      prepositions:
-        - for
-        - at
-        - of
-      excludes:
-        - end_of_support
-    message_names_exclude_prepositions:
-      prepositions:
-        - With
-        - For
-        - Of
-      excludes:
-        - EndOfSupport
-    comments:
-      should_follow_golang_style: true
-    syntax_consistent:
-      version: proto3
+    - COMMENTS
+    - FILE_LOWER_SNAKE_CASE

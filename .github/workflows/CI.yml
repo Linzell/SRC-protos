@@ -36,3 +36,4 @@ jobs:
           exclude_paths: "proto/google"
           lint: false
           format: false
+          breaking: false

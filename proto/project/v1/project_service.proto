@@ -18,3 +18,48 @@
 syntax = "proto3";
 
 package project.v1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+import "project/v1/project.proto";
+
+// ProjectService
+service ProjectService {
+    // ReadProject
+    rpc ReadProject(ReadProjectRequest) returns (Project) {
+        option (google.api.http) = {
+            get: "/v1/projects/{project_id}"
+        };
+    }
+
+    // ListProjects
+    rpc ListProjects(ListProjectsRequest) returns (ListProjectsResponse) {
+        option (google.api.http) = {
+            get: "/v1/projects"
+        };
+    }
+
+    // CreateProject
+    rpc CreateProject(CreateProjectRequest) returns (Project) {
+        option (google.api.http) = {
+            post: "/v1/projects/create"
+            body: "*"
+        };
+    }
+
+    // DisableProject
+    rpc DisableProject(DisableProjectRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/v1/projects/{project_id}/disable"
+            body: "*"
+        };
+    }
+
+    // DeleteProject
+    rpc DeleteProject(DeleteProjectRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            delete: "/v1/projects/{project_id}/delete"
+        };
+    }
+}

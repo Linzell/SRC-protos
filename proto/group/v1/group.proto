@@ -26,78 +26,78 @@ import "group/v1/project.proto";
 
 import "google/api/field_behavior.proto";
 
-// Team
+// Group
 //
-// A team is a group of people who work together to achieve a common goal.
+// A group is a group of people who work together to achieve a common goal.
 //
 // Fields:
 //
-// - cid: The CID of the team.
-// - name: The name of the team.
-// - description: A description of the team.
-// - logo: The logo of the team.
-// - projects: The projects the team is working on.
-// - members: The members of the team.
-message Team {
-    // cid: The CID of the team.
+// - cid: The CID of the group.
+// - name: The name of the group.
+// - description: A description of the group.
+// - logo: The logo of the group.
+// - projects: The projects the group is working on.
+// - members: The members of the group.
+message Group {
+    // cid: The CID of the group.
     string cid = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
-    // name: The name of the team.
+    // name: The name of the group.
     string name = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
-    // description: A description of the team.
+    // description: A description of the group.
     optional string description = 3;
-    // logo: The logo of the team.
+    // logo: The logo of the group.
     optional string logo = 4;
-    // projects: The projects the team is working on.
+    // projects: The projects the group is working on.
     repeated Project projects = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
-    // members: The members of the team.
+    // members: The members of the group.
     repeated Member members = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
 }
 
-// ReadTeamRequest
+// ReadGroupRequest
 //
-// Request message for the ReadTeam method.
+// Request message for the ReadGroup method.
 //
 // Fields:
 //
-// - cid: The CID of the team.
-message ReadTeamRequest {
-    // cid: The CID of the team.
+// - cid: The CID of the group.
+message ReadGroupRequest {
+    // cid: The CID of the group.
     string cid = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
-// CreateTeamRequest
+// CreateGroupRequest
 //
-// Request message for the CreateTeam method.
+// Request message for the CreateGroup method.
 //
 // Fields:
 //
-// - name: The name of the team.
-message CreateTeamRequest {
-    // name: The name of the team.
+// - name: The name of the group.
+message CreateGroupRequest {
+    // name: The name of the group.
     string name = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
-// DisableTeamRequest
+// DisableGroupRequest
 //
-// Request message for the DisableTeam method.
+// Request message for the DisableGroup method.
 //
 // Fields:
 //
-// - cid: The CID of the team.
-message DisableTeamRequest {
-    // cid: The CID of the team.
+// - cid: The CID of the group.
+message DisableGroupRequest {
+    // cid: The CID of the group.
     string cid = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
-// DeleteTeamRequest
+// DeleteGroupRequest
 //
-// Request message for the DeleteTeam method.
+// Request message for the DeleteGroup method.
 //
 // Fields:
 //
-// - cid: The CID of the team.
-message DeleteTeamRequest {
-    // cid: The CID of the team.
+// - cid: The CID of the group.
+message DeleteGroupRequest {
+    // cid: The CID of the group.
     string cid = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
@@ -107,12 +107,12 @@ message DeleteTeamRequest {
 //
 // Fields:
 //
-// - cid: The CID of the team.
-// - name: The new name of the team.
+// - cid: The CID of the group.
+// - name: The new name of the group.
 message UpdateNameRequest {
-    // cid: The CID of the team.
+    // cid: The CID of the group.
     string cid = 1 [(google.api.field_behavior) = REQUIRED];
-    // name: The new name of the team.
+    // name: The new name of the group.
     string name = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
@@ -122,12 +122,12 @@ message UpdateNameRequest {
 //
 // Fields:
 //
-// - cid: The CID of the team.
-// - description: The new description of the team.
+// - cid: The CID of the group.
+// - description: The new description of the group.
 message UpdateDescriptionRequest {
-    // cid: The CID of the team.
+    // cid: The CID of the group.
     string cid = 1 [(google.api.field_behavior) = REQUIRED];
-    // description: The new description of the team.
+    // description: The new description of the group.
     string description = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
@@ -137,12 +137,12 @@ message UpdateDescriptionRequest {
 //
 // Fields:
 //
-// - cid: The CID of the team.
-// - file: The new logo of the team.
+// - cid: The CID of the group.
+// - file: The new logo of the group.
 message UpdateLogoRequest {
-    // cid: The CID of the team.
+    // cid: The CID of the group.
     string cid = 1 [(google.api.field_behavior) = REQUIRED];
-    // file: The new logo of the team.
+    // file: The new logo of the group.
     common.v1.File file = 2 [(google.api.field_behavior) = REQUIRED];
 }
 

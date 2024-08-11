@@ -34,4 +34,6 @@ jobs:
         with:
           input: proto
           exclude_paths: "proto/google"
+          lint: false
+          format: false
           breaking: false

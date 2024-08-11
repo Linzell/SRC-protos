@@ -29,8 +29,6 @@ jobs:
     steps:
       - name: checkout source
         uses: actions/checkout@v4
-        with:
-          path: proto
       - name: run buf
         uses: bufbuild/buf-action@v1
         with:

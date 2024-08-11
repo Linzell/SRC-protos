@@ -22,7 +22,6 @@ package group.v1;
 import "common/v1/common.proto";
 
 import "group/v1/member.proto";
-import "group/v1/project.proto";
 
 import "google/api/field_behavior.proto";
 
@@ -47,10 +46,8 @@ message Group {
     optional string description = 3;
     // logo: The logo of the group.
     optional string logo = 4;
-    // projects: The projects the group is working on.
-    repeated Project projects = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
     // members: The members of the group.
-    repeated Member members = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+    repeated Member members = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
 }
 
 // ReadGroupRequest

@@ -17,21 +17,4 @@
 
 syntax = "proto3";
 
-package group.v1;
-
-import "google/api/field_behavior.proto";
-
-// Project
-//
-// Project for the group.
-//
-// Fields:
-//
-// - cid: The unique identifier for the project.
-// - is_active: Whether the project is active or not.
-message Project {
-    // cid: The unique identifier for the project.
-    string cid = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
-    // is_active: Whether the project is active or not.
-    bool is_active = 2 [(google.api.field_behavior) = INPUT_ONLY];
-}
+package project.v1;

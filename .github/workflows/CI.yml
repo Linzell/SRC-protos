@@ -35,4 +35,5 @@ jobs:
         uses: bufbuild/buf-action@v1
         with:
           input: proto
+          exclude_paths: "proto/google"
           lint: false

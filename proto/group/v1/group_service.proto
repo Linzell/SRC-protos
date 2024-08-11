@@ -23,6 +23,7 @@ import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
 import "group/v1/group.proto";
+import "group/v1/member.proto";
 
 // GroupService
 service GroupService {

@@ -35,3 +35,75 @@ message Project {
     // is_active: Whether the project is active or not.
     bool is_active = 2 [(google.api.field_behavior) = INPUT_ONLY];
 }
+
+// ReadProjectRequest
+//
+// Request to read a project.
+//
+// Fields:
+//
+// - cid: The unique identifier for the project.
+message ReadProjectRequest {
+    // cid: The unique identifier for the project.
+    string cid = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+// ListProjectsRequest
+//
+// Request to list projects.
+//
+// Fields:
+//
+// - group_cid: The unique identifier for the group.
+message ListProjectsRequest {
+    // group_cid: The unique identifier for the group.
+    string group_cid = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+// ListProjectsResponse
+//
+// Response to list projects.
+//
+// Returns:
+//
+// - projects: The projects.
+message ListProjectsResponse {
+    // projects: The projects.
+    repeated Project projects = 1;
+}
+
+// CreateProjectRequest
+//
+// Request to create a project.
+//
+// Fields:
+//
+// - group_cid: The unique identifier for the group.
+message CreateProjectRequest {
+    // group_cid: The unique identifier for the group.
+    string group_cid = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+// DisableProjectRequest
+//
+// Request to disable a project.
+//
+// Fields:
+//
+// - cid: The unique identifier for the project.
+message DisableProjectRequest {
+    // cid: The unique identifier for the project.
+    string cid = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+// DeleteProjectRequest
+//
+// Request to delete a project.
+//
+// Fields:
+//
+// - cid: The unique identifier for the project.
+message DeleteProjectRequest {
+    // cid: The unique identifier for the project.
+    string cid = 1 [(google.api.field_behavior) = REQUIRED];
+}

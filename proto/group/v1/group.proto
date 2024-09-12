@@ -140,7 +140,7 @@ message UpdateLogoRequest {
     // cid: The CID of the group.
     string cid = 1 [(google.api.field_behavior) = REQUIRED];
     // file: The new logo of the group.
-    common.v1.File file = 2 [(google.api.field_behavior) = REQUIRED];
+    common.File file = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
 // UpdateLogoResponse

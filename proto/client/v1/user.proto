@@ -88,7 +88,7 @@ message UpdatePasswordRequest {
 // - file: The file to upload.
 message UploadAvatarRequest {
     // file: The file to upload.
-    common.File file = 1 [(google.api.field_behavior) = REQUIRED];
+    common.v1.File file = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
 // UploadAvatarResponse

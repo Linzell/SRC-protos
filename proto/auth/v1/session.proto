@@ -42,7 +42,7 @@ message Session {
 
 // AuthRequest
 //
-// Request for login
+// Request for authentication
 //
 // Fields:
 //

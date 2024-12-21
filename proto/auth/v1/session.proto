@@ -1,4 +1,4 @@
-// Copyright 2024 Charlie Cohen <linzellart@gmail.com>
+// Copyright Charlie Cohen <linzellart@gmail.com>
 //
 // Licensed under the GNU General Public License, Version 3.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ message Session {
     ];
 }
 
-// LoginRequest
+// AuthRequest
 //
 // Request for login
 //
@@ -48,22 +48,7 @@ message Session {
 //
 // - email: string
 // - password: string
-message LoginRequest {
-    // email: string
-    string email = 1 [(google.api.field_behavior) = REQUIRED];
-    // password: string
-    string password = 2 [(google.api.field_behavior) = REQUIRED];
-}
-
-// RegisterRequest
-//
-// Request for register
-//
-// Fields:
-//
-// - email: string
-// - password: string
-message RegisterRequest {
+message AuthRequest {
     // email: string
     string email = 1 [(google.api.field_behavior) = REQUIRED];
     // password: string

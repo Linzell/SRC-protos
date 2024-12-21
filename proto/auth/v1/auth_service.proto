@@ -1,4 +1,4 @@
-// Copyright 2024 Charlie Cohen <linzellart@gmail.com>
+// Copyright Charlie Cohen <linzellart@gmail.com>
 //
 // Licensed under the GNU General Public License, Version 3.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import "auth/v1/session.proto";
 // AuthService
 service AuthService {
     // Login
-    rpc Login(LoginRequest) returns (Session) {
+    rpc Login(AuthRequest) returns (Session) {
         option (google.api.http) = {
             post: "/v1/auth/login"
             body: "*"
@@ -35,7 +35,7 @@ service AuthService {
     }
 
     // Register
-    rpc Register(RegisterRequest) returns (Session) {
+    rpc Register(AuthRequest) returns (Session) {
         option (google.api.http) = {
             post: "/v1/auth/register"
             body: "*"
